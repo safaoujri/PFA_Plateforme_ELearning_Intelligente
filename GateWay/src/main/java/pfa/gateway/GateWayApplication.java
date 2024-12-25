@@ -17,19 +17,20 @@ public class GateWayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GateWayApplication.class, args);
     }
-    @Bean
-    DiscoveryClientRouteDefinitionLocator routesDynamic(
-            ReactiveDiscoveryClient reactiveDiscoveryClient,
-            DiscoveryLocatorProperties discoveryLocatorProperties){
-        return new DiscoveryClientRouteDefinitionLocator(reactiveDiscoveryClient,discoveryLocatorProperties);
-    }
-
 //    @Bean
-//    RouteLocator routeLocator(RouteLocatorBuilder builder) {
-//        return builder.routes()
-//                .route(r->
-//                        r.path("/user/**").uri("lb://SERVICE-USER"))
-//                .build();
+//    DiscoveryClientRouteDefinitionLocator routesDynamic(
+//            ReactiveDiscoveryClient reactiveDiscoveryClient,
+//            DiscoveryLocatorProperties discoveryLocatorProperties){
+//        return new DiscoveryClientRouteDefinitionLocator(reactiveDiscoveryClient,discoveryLocatorProperties);
 //    }
+
+
+    @Bean
+    RouteLocator routeLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(r->
+                        r.path("/user/**").uri("lb://UtilisateurServer"))
+                .build();
+    }
 
 }
